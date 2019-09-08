@@ -1,0 +1,284 @@
+/**********************************
+GENERALE
+**********************************/
+
+html, body{
+	background-color: #212c3d;
+}
+
+.login-page, .register-page{
+	background-color: #212c3d;
+}
+.login-logo a{
+	color: white;
+}
+
+[v-cloak] { display: none; }
+
+ul{
+	list-style-type: none;
+}
+a:hover{
+	transition: 0.5s;
+}
+/**********************************
+NAVIGATION
+**********************************/
+.title{
+	color: white;
+}
+.title strong{
+	color: #C4C4C4;
+}
+.navbar-blue{
+	background: #29374a;
+	text-transform: uppercase;
+}
+
+.btn-secondary, .btn-secondary:active{
+	background-color: #6441a5;
+	border: none;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+.btn-secondary:active{
+	color: #fff;
+    background-color: #6441a5;
+    border-color: #6441a5;
+}
+.btn-secondary:hover{
+	background-color: white;
+	color: #6441a5;
+}
+
+.item-connexion{
+	margin-left: 30px;
+}
+
+.user-image{
+	width: 50px;
+	border-radius: 100%;
+}
+.userInfo{
+	display: flex;
+    margin: auto;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    /* width: 80%; */
+    position: relative;
+    top: 20px;
+	color: white;
+}
+.level, .kamas{
+	margin-right: 20px;
+}
+.name{
+	position: absolute;
+    bottom: 25px;
+}
+.logo-kamas{
+	width: 20px;
+}
+.user{
+	    display: flex;
+    /* margin: auto; */
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    /* position: relative; */
+    /* bottom: -30px; */
+}
+
+.content-header, .content-header a{
+	color: white;
+}
+
+/**********************************
+FOOTER
+**********************************/
+.main-footer{
+	margin: 0;
+	background-color: #29374a;
+	border-top: none;
+}
+/**********************************
+ACCUEIL
+**********************************/
+.stream, #twitch-embed{
+	height: 80vh;
+}
+
+.stream{
+	margin-bottom: 50px;
+}
+/**********************************
+INVENTAIRE
+**********************************/
+.contentExp{
+	background-color: cadetblue;
+	height: 5px;
+	
+}
+.contenerExp{
+	background-color: white;
+	width: 50%;
+	height: 5px;
+	text-align: center;
+}
+
+.inventaire ul, .pagePerso{
+	display: flex;
+}
+
+.pagePerso{
+	justify-content: center;
+}
+.stuff{
+	background: url('/img/inventaire/inventory_background.png');
+	width: 70%;
+	margin-right: 50px;
+	max-width: 528px;
+	max-height: 752px;
+	padding: 20px;
+}
+.stuffHaut{
+	display: flex;
+	justify-content: center;
+}
+
+.stuffHaut, .stuffBas, .persoInfos{
+}
+
+.stuffLeft, .stuffRight, .stuffBottom, .stuffDofus, .persoInfos{
+	margin: 10px;
+    padding: 0;
+	margin: auto;
+}
+
+.stuffDofus, .stuffBottom{
+	display: flex;
+	width: 100%;
+}
+.stuffCac{ display: flex;}
+
+.stuffBottom{
+	justify-content: space-between;
+    align-items: center;
+}
+#costume{
+	margin-left: -65px;
+}
+.stuffDofus{
+	justify-content: center;
+}
+
+.persoInfos{
+	width: 100%;
+    padding: 20px;
+	margin-top: 40px;
+}
+
+
+.inventaire {
+	background: url('/img/inventaire/inventory_slot_background.png');
+	max-width: 335px;
+	max-height: 727px;
+}
+
+
+
+.itemTabs{
+	padding: 10px;
+	
+}
+.itemTabs li{
+	background-color: #1b1b1b;
+    margin: 1px;
+    border: solid black 1px;
+}
+.itemTabs li.active{
+	background-color: #9ab414;
+}
+
+.itemTabs li:hover{
+	cursor: pointer;
+}
+
+
+
+
+.itemList{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow: auto;
+    height: 673px;
+	margin-right: 9px;
+}
+
+.itemPerso{
+	background: url('/img/inventaire/inventoryEmptySlot.png');
+	max-width: 64px;
+	max-height: 64px;
+	border: 2px solid #666;
+}
+.itemPerso:hover .itemInfos{
+	display: block;
+	cursor: auto;
+}
+
+.itemPerso:hover{
+	cursor: pointer;
+}
+
+.itemInfos{
+	display: none;
+	position : absolute;
+	background-color: rgba(0,0,0, 0.5);
+    padding: 15px;
+	
+}
+
+/*div::scroolbars*/
+.itemList::-webkit-scrollbar {
+    width: 8px;
+}
+.itemList::-webkit-scrollbar-track {
+    background: #3d3f36; 
+}
+.itemList::-webkit-scrollbar-thumb {
+    background: #c5eb02;
+}
+
+.stats{
+	color: #8af103;
+}
+.stats em{
+	color: white;
+}
+
+
+.stuffed {
+	border: 2px solid #3BD323;
+}
+
+.stuffActuel{
+	background: url('/img/inventaire/emptySlot.png');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= title %></title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <% include navbar.ejs %>
+
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-white">Arène de combat</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+              <li class="breadcrumb-item active">Arène</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="col-sm-12 stream text-white" id="perso">
+      		<h1>L'arène de combat</h1>
+			
+
+		</div> 
+		  
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.world.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<script src="socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://62.210.219.88:8080');
+			var userName = "<%= user.displayName %>";
+			socket.emit('getuserconnection', userName);
+		
+
+			
+			// (100 X Valeur Partielle) / Valeur Totale width="'+ (100* user.exp) / user.niveau +'"
+
+
+			var app = new Vue({
+			  el: '#perso',
+			  data: {
+					pseudo: '',
+					kamas: 0 ,
+					niveau: 0 ,
+					exp: 0 ,
+					expMax: 0,
+				  	pourcent : "",
+				  	force: 0,
+				  	stuffActuel: [ 
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_amu.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_anneau.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_anneau.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_coiffe.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_cape.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_ceinture.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_botte.png",
+						},
+						{
+							"imgUrl": "/img/inventaire/icons/tx_slot_amu.png",
+						},
+					],
+				  	inventory: [
+						{
+							"_id": 0,
+							"name": "Amulette du hibou",
+							"type": "Amulette",
+							"imgUrl": "https://s.ankama.com/www/static.ankama.com/dofus/www/game/items/200/1001.png",
+							"description": "Cette amulette augmente l'intelligence de son porteur.",
+							"equiped": true,
+							"stats": [
+								{
+									"Force": {
+										"from": 10
+									}
+								}
+							],
+						},
+						{
+							"_id": 1,
+							"name": "Anneau de la Fuji Givrefoux",
+							"lvl": "192",
+							"type": "Anneau",
+							"imgUrl": "https://s.ankama.com/www/static.ankama.com/dofus/www/game/items/200/10205.png",
+							"description": "Avant d'être la génitrice de tous les Givrefoux, la Fuji Givrefoux portait cet anneau comme une ceinture. De nos jours, il va parfaitement à ses doigts boudinés. Ainsi qu'aux vôtres.",
+							"equiped": false,
+							"stats": [
+								{
+									"Force": {
+										"from": 50
+									}
+								}
+							],
+						},
+						{
+							"_id": 2,
+							"name": "Bottes de Cantile",
+							"lvl": "156",
+							"type": "Bottes",
+							"imgUrl": "https://s.ankama.com/www/static.ankama.com/dofus/www/game/items/200/11190.png",
+							"description": "Ces bottes font tellement de bruit en marchant que l'on raconte souvent qu'elles ont été lestées de plomb par Lucette Brifian plus connue sous le sobriquet de \"Lulu\", afin de suivre le Maire Cantile à la trace.",
+							"equiped": true,
+							"stats": [
+								{
+									"Force": {
+										"from": 100
+									}
+								}
+							]
+						}
+					]
+			  },
+				methods: {
+					equipStuff: function(stuffed, index, type){
+						
+						//Ajoute ou retire de la force si l'objet a était équipé ou non
+						this.inventory[index].equiped =! stuffed;
+						if(this.inventory[index].equiped){
+							switch (type) {
+							  case 'Amulette':
+								this.stuffActuel.splice(0, 1, this.inventory[index]);
+								break;
+							  case 'Anneau':
+								this.stuffActuel.splice(1, 1, this.inventory[index]);
+								break;
+							  case 'Coiffe':
+								this.stuffActuel.splice(3, 1, this.inventory[index]);
+								break;
+							  case 'Cape':
+								this.stuffActuel.splice(4, 1, this.inventory[index]);
+								break;
+							  case 'Ceinture':
+								this.stuffActuel.splice(5, 1, this.inventory[index]);
+								break;
+							  case 'Bottes':
+								this.stuffActuel.splice(6, 1, this.inventory[index]);
+								break;
+							  default:
+								console.log('Sorry, we are out of ' + type + '.');
+							}
+							this.force = this.inventory[index].stats[0].Force.from + this.force;
+						}else{
+							switch (type) {
+							  case 'Amulette':
+								this.stuffActuel.splice(0, 1, { "imgUrl": "/img/inventaire/icons/tx_slot_amu.png"});
+								break;
+							  case 'Anneau':
+								this.stuffActuel.splice(1, 1, { "imgUrl": "/img/inventaire/icons/tx_slot_anneau.png"});
+								break;
+							  case 'Coiffe':
+								this.stuffActuel.splice(3, 1, { "imgUrl": "/img/inventaire/icons/tx_slot_coiffe.png"});
+								break;
+							  case 'Cape':
+								this.stuffActuel.splice(4, 1, { "imgUrl": "/img/inventaire/icons/tx_slot_cape.png"});
+								break;
+							  case 'Ceinture':
+								this.stuffActuel.splice(5, 1, { "imgUrl": "/img/inventaire/icons/tx_slot_ceinture.png"});
+								break;
+							  case 'Bottes':
+								this.stuffActuel.splice(6, 1, { "imgUrl": "/img/inventaire/icons/tx_slot_botte.png"});
+								break;
+							  default:
+								console.log('Sorry, we are out of ' + type + '.');
+							}
+							
+							this.force = this.force - this.inventory[index].stats[0].Force.from;
+						}
+						//Afficher l'image dans le panel d'équipement actuel quand il est équipé, ou l'enlever quand on le retire
+						
+						
+						
+						
+						
+					},
+				},
+				mounted: function() {
+					//Initialise a la connection, les variables
+				  socket.on('giveuser', function(user) {
+					  	app.pseudo = user.pseudo;
+					  	app.kamas = user.kamas;
+					  	app.niveau = user.niveau;
+					    app.exp = user.exp;
+					    app.expMax = user.niveau * 5 ;
+					  	app.pourcent = (100 * user.exp ) / app.expMax + '%';
+					  //Pour chaque item dans l'inventaire, regarder si ils sont équipé et mettre à jour la force et le stuff
+					  	for (i = 0; i < app.inventory.length; i++) {
+						  if(app.inventory[i].equiped === true){
+							switch (app.inventory[i].type) {
+							  case 'Amulette':
+								app.stuffActuel.splice(0, 1, app.inventory[i]);
+								break;
+							  case 'Anneau':
+								app.stuffActuel.splice(1, 1, app.inventory[i]);
+								break;
+							  case 'Coiffe':
+								app.stuffActuel.splice(3, 1, app.inventory[i]);
+								break;
+							  case 'Cape':
+								app.stuffActuel.splice(4, 1, app.inventory[i]);
+								break;
+							  case 'Ceinture':
+								app.stuffActuel.splice(5, 1, app.inventory[i]);
+								break;
+							  case 'Bottes':
+								app.stuffActuel.splice(6, 1, app.inventory[i]);
+								break;
+							  default:
+								console.log('Sorry, we are out of ' + type + '.');
+							} 
+						  	app.force = app.inventory[i].stats[0].Force.from + app.force;
+						  }
+						}
+					  	
+					})
+				}
+			})
+
+ </script>
+	
+</body>
+</html>
