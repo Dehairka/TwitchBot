@@ -13,6 +13,6 @@
     "express-session": "^1.15.6",
     "passport": "^0.4.0",
     "passport-twitch": "^1.0.3",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.5.0"
   }
 }
